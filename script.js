@@ -14,6 +14,16 @@ function logic() {
         'cell-9',
     ];
 
+    // Array of cell elements
+    let cellElements = cellIds.map((cell) =>
+        document.querySelector(`#${cell}`)
+    );
+
+    // Array of cell values
+    let cellValues = cellElements.map(
+        (element) => element.value
+    );
+
 }
 
 function mark(event) {
