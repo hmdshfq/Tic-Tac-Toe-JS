@@ -36,6 +36,23 @@ function logic() {
         [2, 4, 6],
     ];
 
+
+    // Evaluate if X or O wins or it's a draw
+    winPatterns.forEach(pattern => {
+        if (
+            cellValues[pattern[0]] === 'X' &&
+            cellValues[pattern[1]] === 'X' &&
+            cellValues[pattern[2]] === 'X'
+        ) {
+            console.log('X wins')
+        } else if (
+            cellValues[pattern[0]] === 'O' &&
+            cellValues[pattern[1]] === 'O' &&
+            cellValues[pattern[2]] === 'O'
+        ) {
+            console.log('O wins');
+        }
+    });
 }
 
 function mark(event) {
