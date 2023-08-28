@@ -1,4 +1,40 @@
+:root {
+    --border: 2px solid hsl(0 0% 60%)
+}
 body {
     margin: 0px;
     font-family: sans-serif;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game-ui {
+    max-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    margin-right: auto;
+    margin-left: auto;
+}
+.cell {
+    border: none;
+    text-align: center;
+    font-size: 3rem;
+}
+#cell-1,
+#cell-2,
+#cell-4,
+#cell-5 {
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+#cell-3,
+#cell-6 {
+    border-bottom: var(--border);
+}
+#cell-7,
+#cell-8 {
+    border-right: var(--border);
 }
