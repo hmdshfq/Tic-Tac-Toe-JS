@@ -22,6 +22,8 @@ main {
     border: none;
     text-align: center;
     font-size: 3rem;
+    color: transparent;
+    text-shadow: 0 0 0 hsl(0 0% 20%);
 }
 #cell-1,
 #cell-2,
