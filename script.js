@@ -36,6 +36,8 @@ function logic() {
         [2, 4, 6],
     ];
 
+    // Number of empty cells left
+    let emptyCells = cellValues.filter(value => value === '').length;
 
     // Evaluate if X or O wins or it's a draw
     winPatterns.forEach(pattern => {
@@ -51,6 +53,8 @@ function logic() {
             cellValues[pattern[2]] === 'O'
         ) {
             console.log('O wins');
+        } else if (emptyCells === 0) {
+            console.log('Match Tied!');
         }
     });
 }
