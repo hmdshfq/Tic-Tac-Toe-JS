@@ -38,3 +38,10 @@ main {
 #cell-8 {
     border-right: var(--border);
 }
+#reset {
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    margin-top: 40px;
+    cursor: pointer;
+}
