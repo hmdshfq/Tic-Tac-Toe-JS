@@ -1,6 +1,10 @@
 :root {
     --border: 2px solid hsl(0 0% 60%)
 }
+html,
+body {
+    height: 100%;
+}
 body {
     margin: 0px;
     font-family: sans-serif;
@@ -8,22 +12,28 @@ body {
 main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 100%;
+}
+h1 {
+    margin-top: 0px;
+    margin-bottom: 2em;
 }
 .game-ui {
-    max-width: 300px;
     display: grid;
-    grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 100px);
     margin-right: auto;
     margin-left: auto;
+    max-width: 300px;
 }
 .cell {
-    border: none;
-    text-align: center;
-    font-size: 3rem;
-    color: transparent;
     cursor: pointer;
+    border: none;
+    color: transparent;
+    font-size: 3rem;
+    text-align: center;
     text-shadow: 0 0 0 hsl(0 0% 20%);
 }
 #cell-1,
@@ -42,9 +52,9 @@ main {
     border-right: var(--border);
 }
 #reset {
-    border: none;
-    padding: 16px 32px;
-    border-radius: 8px;
-    margin-top: 40px;
     cursor: pointer;
+    margin-top: 40px;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 32px;
 }
