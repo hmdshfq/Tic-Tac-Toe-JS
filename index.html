@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,32 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
+
 <body>
     <main>
         <h1>Tic Tac Toe</h1>
         <div class="game-ui">
-            <input type="text" id="cell-1" class="cell" onclick="mark(event); logic();"/>
-            <input type="text" id="cell-2" class="cell" onclick="mark(event); logic();"/>
-            <input type="text" id="cell-3" class="cell" onclick="mark(event); logic();"/>
-            <input type="text" id="cell-4" class="cell" onclick="mark(event); logic();"/>
-            <input type="text" id="cell-5" class="cell" onclick="mark(event); logic();"/>
-            <input type="text" id="cell-6" class="cell" onclick="mark(event); logic();"/>
-            <input type="text" id="cell-7" class="cell" onclick="mark(event); logic();"/>
-            <input type="text" id="cell-8" class="cell" onclick="mark(event); logic();"/>
-            <input type="text" id="cell-9" class="cell" onclick="mark(event); logic();"/>
+            <input aria-label="Tic Tac Toe Input" type="text" id="cell-1" class="cell" onclick="playGame(event)"
+                onkeydown="playGame(event)" />
+            <input aria-label="Tic Tac Toe Input" type="text" id="cell-2" class="cell" onclick="playGame(event)"
+                onkeydown="playGame(event)" />
+            <input aria-label="Tic Tac Toe Input" type="text" id="cell-3" class="cell" onclick="playGame(event)"
+                onkeydown="playGame(event)" />
+            <input aria-label="Tic Tac Toe Input" type="text" id="cell-4" class="cell" onclick="playGame(event)"
+                onkeydown="playGame(event)" />
+            <input aria-label="Tic Tac Toe Input" type="text" id="cell-5" class="cell" onclick="playGame(event)"
+                onkeydown="playGame(event)" />
+            <input aria-label="Tic Tac Toe Input" type="text" id="cell-6" class="cell" onclick="playGame(event)"
+                onkeydown="playGame(event)" />
+            <input aria-label="Tic Tac Toe Input" type="text" id="cell-7" class="cell" onclick="playGame(event)"
+                onkeydown="playGame(event)" />
+            <input aria-label="Tic Tac Toe Input" type="text" id="cell-8" class="cell" onclick="playGame(event)"
+                onkeydown="playGame(event)" />
+            <input aria-label="Tic Tac Toe Input" type="text" id="cell-9" class="cell" onclick="playGame(event)"
+                onkeydown="playGame(event)" />
         </div>
         <button id="reset" onclick="reset()">Reset</button>
     </main>
 </body>
+
 </html>

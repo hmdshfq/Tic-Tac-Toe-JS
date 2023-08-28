@@ -1,5 +1,13 @@
 let userTurn = true;
 
+function playGame(event) {
+    if (event.code === 'Space' || event.type === 'click') {
+        mark(event);
+        logic();
+    }
+}
+
+
 function logic() {
     // Array of id names of cells
     let cellIds = [
