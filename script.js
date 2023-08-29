@@ -1,4 +1,5 @@
 let userTurn = true;
+let nextPlayer = document.querySelector('#next-player');
 
 function playGame(event) {
     if (event.code === 'Space' || event.type === 'click') {
@@ -54,15 +55,15 @@ function logic() {
             cellValues[pattern[1]] === 'X' &&
             cellValues[pattern[2]] === 'X'
         ) {
-            console.log('X wins')
+            nextPlayer.textContent = 'Player X Wins!';
         } else if (
             cellValues[pattern[0]] === 'O' &&
             cellValues[pattern[1]] === 'O' &&
             cellValues[pattern[2]] === 'O'
-        ) {
-            console.log('O wins');
+            ) {
+            nextPlayer.textContent = 'Player O Wins!';
         } else if (emptyCells === 0) {
-            console.log('Match Tied!');
+            nextPlayer.textContent = 'Match Tied!';
         }
     });
 }
@@ -73,10 +74,12 @@ function mark(event) {
     if (userTurn === true) {
         input.value = 'X';
         input.disabled = true;
+        nextPlayer.textContent = 'Player O\'s Turn'
         userTurn = false;
     } else {
         input.value = 'O';
         input.disabled = true;
+        nextPlayer.textContent = 'Player X\'s Turn'
         userTurn = true;
     }
 }
