@@ -22,11 +22,11 @@
             <div id="score-section">
                 <div class="score">
                     <div class="score-player">X</div>
-                    <div class="score-points">0</div>
+                    <div id="player-x-score" class="score-points">0</div>
                 </div>
                 <div class="score">
                     <div class="score-player">O</div>
-                    <div class="score-points">0</div>
+                    <div id="player-o-score" class="score-points">0</div>
                 </div>
             </div>
         </div>
@@ -51,7 +51,8 @@
                 onkeydown="playGame(event)" />
         </div>
         <p id="next-player">Player X's Turn</p>
-        <button id="reset" onclick="reset()">Reset</button>
+        <button id="restart" onclick="restart()">Restart</button>
+        <button id="reset" onclick="reset()">Reset Score</button>
     </main>
 </body>
 
