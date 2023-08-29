@@ -1,14 +1,13 @@
 :root {
-    --border: 2px solid hsl(0 0% 60%)
+    --border: 2px solid hsl(0 0% 60%);
 }
 html,
 body {
     height: 100%;
-    font-family: 'Space Grotesk', sans-serif;
 }
 body {
     margin: 0px;
-    font-family: sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
 }
 main {
     display: flex;
@@ -18,16 +17,16 @@ main {
     min-height: 100%;
 }
 h1 {
-    font-size: 4rem;
-    font-family: 'Bungee Shade', cursive;
     margin-top: 0px;
     margin-bottom: 40px;
+    font-size: clamp(2rem, 1.3043rem + 3.4783vw, 4rem);
+    font-family: 'Bungee Shade', cursive;
 }
 #score-board {
     display: flex;
     flex-direction: column;
-    font-family: 'Space Mono', monospace;
     margin-bottom: 40px;
+    font-family: 'Space Mono', monospace;
 }
 #score-board-heading {
     font-size: 2rem;
@@ -38,9 +37,9 @@ h1 {
 }
 .score {
     display: flex;
+    flex: 1 1 50px;
     flex-direction: column;
     align-items: center;
-    flex: 1 1 50px;
 }
 .score-player {
     font-size: 1.5rem;
@@ -61,6 +60,7 @@ h1 {
     border: none;
     color: transparent;
     font-size: 3rem;
+    font-family: 'Space Grotesk', sans-serif;
     text-align: center;
     text-shadow: 0 0 0 hsl(0 0% 20%);
 }
@@ -80,9 +80,9 @@ h1 {
     border-right: var(--border);
 }
 #next-player {
-    font-size: 2rem;
     margin-top: 40px;
     margin-bottom: 0px;
+    font-size: 2rem;
 }
 #restart,
 #reset {
@@ -91,15 +91,19 @@ h1 {
     border: none;
     border-radius: 8px;
     padding: 16px 32px;
-    text-transform: uppercase;
-    font-size: 1.5rem;
     font-weight: 500;
+    font-size: 1.5rem;
     font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
 }
 #reset {
-    background-color: crimson;
-    font-size: 0.875rem;
-    padding: 0.75em 1em;
     margin-bottom: 80px;
+    background-color: crimson;
+    padding: 0.75em 1em;
     color: white;
+    font-size: 0.875rem;
+}
+footer {
+    padding: 80px 20px;
+    text-align: center;
 }
