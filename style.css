@@ -58,11 +58,9 @@ h1 {
 .cell {
     cursor: pointer;
     border: none;
-    color: transparent;
     font-size: 3rem;
     font-family: 'Space Grotesk', sans-serif;
     text-align: center;
-    text-shadow: 0 0 0 hsl(0 0% 20%);
 }
 #cell-1,
 #cell-2,

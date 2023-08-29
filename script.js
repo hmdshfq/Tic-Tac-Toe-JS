@@ -69,6 +69,11 @@ function logic() {
             disableCells();
             localStorage.setItem('X', Number(winsPlayerX) + 1);
             playerXScore.textContent = localStorage.getItem('X');
+            cellElements[pattern[0]].style.color = 'goldenrod';
+            cellElements[pattern[1]].style.color = 'goldenrod';
+            cellElements[pattern[2]].style.color = 'goldenrod';
+            nextPlayer.style.color = 'goldenrod';
+            nextPlayer.style.fontWeight = 500;
             nextPlayer.textContent = 'Player X Wins!';
         } else if (
             cellValues[pattern[0]] === 'O' &&
@@ -78,6 +83,11 @@ function logic() {
             disableCells();
             localStorage.setItem('O', Number(winsPlayerO) + 1);
             playerOScore.textContent = localStorage.getItem('O');
+            cellElements[pattern[0]].style.color = 'goldenrod';
+            cellElements[pattern[1]].style.color = 'goldenrod';
+            cellElements[pattern[2]].style.color = 'goldenrod';
+            nextPlayer.style.color = 'goldenrod';
+            nextPlayer.style.fontWeight = 500;
             nextPlayer.textContent = 'Player O Wins!';
         } else if (emptyCells === 0) {
             nextPlayer.textContent = 'Match Tied!';
