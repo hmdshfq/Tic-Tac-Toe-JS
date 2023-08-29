@@ -9,13 +9,27 @@
     <script defer src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Space+Grotesk:wght@400;500&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Space+Grotesk:wght@400;500&family=Space+Mono&display=swap"
         rel="stylesheet">
 </head>
 
 <body>
     <main>
         <h1>Tic Tac Toe</h1>
+        <div id="score-board">
+            <div id="score-board-heading">Score</div>
+            <div id="score-section">
+                <div class="score">
+                    <div class="score-player">X</div>
+                    <div class="score-points">0</div>
+                </div>
+                <div class="score">
+                    <div class="score-player">O</div>
+                    <div class="score-points">0</div>
+                </div>
+            </div>
+        </div>
         <div class="game-ui">
             <input aria-label="Tic Tac Toe Input" type="text" id="cell-1" class="cell" onclick="playGame(event)"
                 onkeydown="playGame(event)" />

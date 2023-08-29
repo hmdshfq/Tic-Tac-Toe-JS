@@ -21,7 +21,32 @@ h1 {
     font-size: 4rem;
     font-family: 'Bungee Shade', cursive;
     margin-top: 0px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
+}
+#score-board {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 40px;
+}
+#score-board-heading {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+#score-section {
+    display: flex;
+}
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 50px;
+}
+.score-player {
+    font-size: 1.5rem;
+}
+.score-points {
+    font-size: 1.24rem;
 }
 .game-ui {
     display: grid;
@@ -56,11 +81,12 @@ h1 {
 }
 #next-player {
     font-size: 2rem;
+    margin-top: 40px;
     margin-bottom: 0px;
 }
 #reset {
     cursor: pointer;
-    margin-top: 80px;
+    margin-top: 40px;
     border: none;
     border-radius: 8px;
     padding: 16px 32px;
