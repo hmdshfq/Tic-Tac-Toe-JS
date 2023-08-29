@@ -128,6 +128,7 @@ function reset() {
         playerXScore.textContent = localStorage.getItem('X');
         playerOScore.textContent = localStorage.getItem('O');
         alert('Score Reset!');
+        restart();
     } else {
         alert('Score kept!');
     }
