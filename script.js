@@ -55,17 +55,23 @@ function logic() {
             cellValues[pattern[1]] === 'X' &&
             cellValues[pattern[2]] === 'X'
         ) {
+            disableCells();
             nextPlayer.textContent = 'Player X Wins!';
         } else if (
             cellValues[pattern[0]] === 'O' &&
             cellValues[pattern[1]] === 'O' &&
             cellValues[pattern[2]] === 'O'
-            ) {
+        ) {
+            disableCells();
             nextPlayer.textContent = 'Player O Wins!';
         } else if (emptyCells === 0) {
             nextPlayer.textContent = 'Match Tied!';
         }
     });
+
+    function disableCells() {
+        cellElements.forEach(cell => cell.disabled = true);
+    }
 }
 
 function mark(event) {
