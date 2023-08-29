@@ -9,10 +9,9 @@ let playerOScore = document.querySelector('#player-o-score');
     if (!winsPlayerX && !winsPlayerO) {
         localStorage.setItem('X', 0);
         localStorage.setItem('O', 0);
-        window.location.reload();
     }
-    playerXScore.textContent = winsPlayerX;
-    playerOScore.textContent = winsPlayerO;
+    playerXScore.textContent = localStorage.getItem('X');
+    playerOScore.textContent = localStorage.getItem('O');
 })();
 
 function playGame(event) {
