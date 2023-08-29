@@ -123,9 +123,10 @@ function restart() {
 function reset() {
     let message = 'Do you really want to RESET the score?';
     if (confirm(message) == true) {
-        localStorage.clear();
-        playerXScore.textContent = 0;
-        playerOScore.textContent = 0;
+        localStorage.setItem('X', 0);
+        localStorage.setItem('O', 0);
+        playerXScore.textContent = localStorage.getItem('X');
+        playerOScore.textContent = localStorage.getItem('O');
         alert('Score Reset!');
     } else {
         alert('Score kept!');
