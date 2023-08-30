@@ -4,9 +4,9 @@ let winsPlayerX = localStorage.getItem('X');
 let winsPlayerO = localStorage.getItem('O');
 let playerXScore = document.querySelector('#player-x-score');
 let playerOScore = document.querySelector('#player-o-score');
-let randomNumber = Math.random().toFixed(1);
+let randomNumber = Math.random() * 10;
 
-if (randomNumber < 0.5) {
+if (randomNumber <= 5.5) {
     userTurn = true;
     message.textContent = "Player X's Turn";
 } else {
