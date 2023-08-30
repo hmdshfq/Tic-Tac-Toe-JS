@@ -1,9 +1,18 @@
-let userTurn = true;
-let nextPlayer = document.querySelector('#next-player');
+let userTurn;
+let message = document.querySelector('#message');
 let winsPlayerX = localStorage.getItem('X');
 let winsPlayerO = localStorage.getItem('O');
 let playerXScore = document.querySelector('#player-x-score');
 let playerOScore = document.querySelector('#player-o-score');
+let randomNumber = Math.random().toFixed(1);
+
+if (randomNumber < 0.5) {
+    userTurn = true;
+    message.textContent = "Player X's Turn";
+} else {
+    userTurn = false;
+    message.textContent = "Player O's Turn";
+}
 
 (function checkPlayerWins() {
     if (!winsPlayerX && !winsPlayerO) {
@@ -75,9 +84,9 @@ function logic() {
             cellElements[pattern[0]].style.color = 'goldenrod';
             cellElements[pattern[1]].style.color = 'goldenrod';
             cellElements[pattern[2]].style.color = 'goldenrod';
-            nextPlayer.style.color = 'goldenrod';
-            nextPlayer.style.fontWeight = 500;
-            nextPlayer.textContent = 'Player X Wins!';
+            message.style.color = 'goldenrod';
+            message.style.fontWeight = 500;
+            message.textContent = 'Player X Wins!';
             won = true;
         } else if (
             cellValues[pattern[0]] === 'O' &&
@@ -90,15 +99,15 @@ function logic() {
             cellElements[pattern[0]].style.color = 'goldenrod';
             cellElements[pattern[1]].style.color = 'goldenrod';
             cellElements[pattern[2]].style.color = 'goldenrod';
-            nextPlayer.style.color = 'goldenrod';
-            nextPlayer.style.fontWeight = 500;
-            nextPlayer.textContent = 'Player O Wins!';
+            message.style.color = 'goldenrod';
+            message.style.fontWeight = 500;
+            message.textContent = 'Player O Wins!';
             won = true;
         }
     });
 
     if (emptyCells === 0 && won === false) {
-        nextPlayer.textContent = 'Match Tied!';
+        message.textContent = 'Match Tied!';
     }
 
     function disableCells() {
@@ -112,12 +121,12 @@ function mark(event) {
     if (userTurn === true) {
         input.value = 'X';
         input.disabled = true;
-        nextPlayer.textContent = "Player O's Turn";
+        message.textContent = "Player O's Turn";
         userTurn = false;
     } else {
         input.value = 'O';
         input.disabled = true;
-        nextPlayer.textContent = "Player X's Turn";
+        message.textContent = "Player X's Turn";
         userTurn = true;
     }
 }
