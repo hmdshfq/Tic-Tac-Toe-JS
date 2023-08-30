@@ -60,6 +60,8 @@ function logic() {
     // Number of empty cells left
     let emptyCells = cellValues.filter((value) => value === '').length;
 
+    let won = false;
+
     // Evaluate if X or O wins or it's a draw
     winPatterns.forEach((pattern) => {
         if (
@@ -76,6 +78,7 @@ function logic() {
             nextPlayer.style.color = 'goldenrod';
             nextPlayer.style.fontWeight = 500;
             nextPlayer.textContent = 'Player X Wins!';
+            won = true;
         } else if (
             cellValues[pattern[0]] === 'O' &&
             cellValues[pattern[1]] === 'O' &&
@@ -90,10 +93,13 @@ function logic() {
             nextPlayer.style.color = 'goldenrod';
             nextPlayer.style.fontWeight = 500;
             nextPlayer.textContent = 'Player O Wins!';
-        } else if (emptyCells === 0) {
-            nextPlayer.textContent = 'Match Tied!';
+            won = true;
         }
     });
+
+    if (emptyCells === 0 && won === false) {
+        nextPlayer.textContent = 'Match Tied!';
+    }
 
     function disableCells() {
         cellElements.forEach((cell) => (cell.disabled = true));
