@@ -1,9 +1,9 @@
 let userTurn;
 let message = document.querySelector('#message');
-let winsPlayerX = localStorage.getItem('X');
-let winsPlayerO = localStorage.getItem('O');
-let playerXScore = document.querySelector('#player-x-score');
-let playerOScore = document.querySelector('#player-o-score');
+let playerXScore = localStorage.getItem('X');
+let playerOScore = localStorage.getItem('O');
+let playerXScoreElement = document.querySelector('#player-x-score');
+let playerOScoreElement = document.querySelector('#player-o-score');
 let randomNumber = Math.random() * 10;
 
 if (randomNumber <= 5.5) {
@@ -15,14 +15,14 @@ if (randomNumber <= 5.5) {
 }
 
 (function checkPlayerWins() {
-    if (!winsPlayerX && !winsPlayerO) {
+    if (!playerXScore && !playerOScore) {
         localStorage.setItem('X', 0);
         localStorage.setItem('O', 0);
-        winsPlayerX = localStorage.getItem('X');
-        winsPlayerO = localStorage.getItem('O');
+        playerXScore = localStorage.getItem('X');
+        playerOScore = localStorage.getItem('O');
     }
-    playerXScore.textContent = winsPlayerX;
-    playerOScore.textContent = winsPlayerO;
+    playerXScoreElement.textContent = playerXScore;
+    playerOScoreElement.textContent = playerOScore;
 })();
 
 function playGame(event) {
@@ -79,8 +79,8 @@ function logic() {
             cellValues[pattern[2]] === 'X'
         ) {
             disableCells();
-            localStorage.setItem('X', Number(winsPlayerX) + 1);
-            playerXScore.textContent = localStorage.getItem('X');
+            localStorage.setItem('X', Number(playerXScore) + 1);
+            playerXScoreElement.textContent = localStorage.getItem('X');
             cellElements[pattern[0]].style.color = 'goldenrod';
             cellElements[pattern[1]].style.color = 'goldenrod';
             cellElements[pattern[2]].style.color = 'goldenrod';
@@ -94,8 +94,8 @@ function logic() {
             cellValues[pattern[2]] === 'O'
         ) {
             disableCells();
-            localStorage.setItem('O', Number(winsPlayerO) + 1);
-            playerOScore.textContent = localStorage.getItem('O');
+            localStorage.setItem('O', Number(playerOScore) + 1);
+            playerOScoreElement.textContent = localStorage.getItem('O');
             cellElements[pattern[0]].style.color = 'goldenrod';
             cellElements[pattern[1]].style.color = 'goldenrod';
             cellElements[pattern[2]].style.color = 'goldenrod';
@@ -140,8 +140,8 @@ function reset() {
     if (confirm(message) == true) {
         localStorage.setItem('X', 0);
         localStorage.setItem('O', 0);
-        playerXScore.textContent = localStorage.getItem('X');
-        playerOScore.textContent = localStorage.getItem('O');
+        playerXScoreElement.textContent = localStorage.getItem('X');
+        playerOScoreElement.textContent = localStorage.getItem('O');
         alert('Score Reset!');
         restart();
     } else {
