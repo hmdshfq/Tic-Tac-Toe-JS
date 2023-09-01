@@ -62,6 +62,10 @@ h1 {
     font-family: 'Space Grotesk', sans-serif;
     text-align: center;
 }
+.win {
+    color: goldenrod;
+    font-weight: 500;
+}
 #cell-1,
 #cell-2,
 #cell-4,

@@ -6,6 +6,23 @@ let playerXScoreElement = document.querySelector('#player-x-score');
 let playerOScoreElement = document.querySelector('#player-o-score');
 let randomNumber = Math.random() * 10;
 
+/*
+* Check if the score exists in local storage 
+* and assign it to the score board
+*/
+function checkScore() {
+    if (!playerXScore && !playerOScore) {
+        localStorage.setItem('X', 0);
+        localStorage.setItem('O', 0);
+        playerXScore = 0;
+        playerOScore = 0;
+    }
+    playerXScoreElement.textContent = playerXScore;
+    playerOScoreElement.textContent = playerOScore;
+};
+checkScore();
+
+// Randomize each player's turn
 if (randomNumber <= 5.5) {
     userTurn = true;
     message.textContent = "Player X's Turn";
@@ -14,25 +31,33 @@ if (randomNumber <= 5.5) {
     message.textContent = "Player O's Turn";
 }
 
-(function checkPlayerWins() {
-    if (!playerXScore && !playerOScore) {
-        localStorage.setItem('X', 0);
-        localStorage.setItem('O', 0);
-        playerXScore = localStorage.getItem('X');
-        playerOScore = localStorage.getItem('O');
-    }
-    playerXScoreElement.textContent = playerXScore;
-    playerOScoreElement.textContent = playerOScore;
-})();
-
+// Start game when user clicks or press space key
 function playGame(event) {
     if (event.code === 'Space' || event.type === 'click') {
-        mark(event);
-        logic();
+        markCell(event);
+        gameLogic();
     }
 }
 
-function logic() {
+// Mark X or O in the selected cell
+function markCell(event) {
+    let input = event.target;
+
+    if (userTurn === true) {
+        input.value = 'X';
+        input.disabled = true;
+        message.textContent = "Player O's Turn";
+        userTurn = false;
+    } else {
+        input.value = 'O';
+        input.disabled = true;
+        message.textContent = "Player X's Turn";
+        userTurn = true;
+    }
+}
+
+// The main logic of winning the game
+function gameLogic() {
     // Array of id names of cells
     let cellIds = [
         'cell-1',
@@ -52,7 +77,7 @@ function logic() {
     );
 
     // Array of cell values
-    let cellValues = cellElements.map((element) => element.value);
+    let cellValues = cellElements.map((cell) => cell.value);
 
     // Array of winning patterns
     let winPatterns = [
@@ -69,79 +94,73 @@ function logic() {
     // Number of empty cells left
     let emptyCells = cellValues.filter((value) => value === '').length;
 
+    // Flag for match tied condition
     let won = false;
 
-    // Evaluate if X or O wins or it's a draw
+    // Evaluate if X or O wins
     winPatterns.forEach((pattern) => {
-        if (
-            cellValues[pattern[0]] === 'X' &&
-            cellValues[pattern[1]] === 'X' &&
-            cellValues[pattern[2]] === 'X'
-        ) {
-            disableCells();
-            localStorage.setItem('X', Number(playerXScore) + 1);
-            playerXScoreElement.textContent = localStorage.getItem('X');
-            cellElements[pattern[0]].style.color = 'goldenrod';
-            cellElements[pattern[1]].style.color = 'goldenrod';
-            cellElements[pattern[2]].style.color = 'goldenrod';
-            message.style.color = 'goldenrod';
-            message.style.fontWeight = 500;
-            message.textContent = 'Player X Wins!';
-            won = true;
+        let cell1 = cellElements[pattern[0]];
+        let cell2 = cellElements[pattern[1]];
+        let cell3 = cellElements[pattern[2]];
+        if (cell1.value === 'X' && cell2.value === 'X' && cell3.value === 'X') {
+            winner('X');
+            winStyles([cell1, cell2, cell3, message]);
         } else if (
-            cellValues[pattern[0]] === 'O' &&
-            cellValues[pattern[1]] === 'O' &&
-            cellValues[pattern[2]] === 'O'
+            cell1.value === 'O' &&
+            cell2.value === 'O' &&
+            cell3.value === 'O'
         ) {
-            disableCells();
-            localStorage.setItem('O', Number(playerOScore) + 1);
-            playerOScoreElement.textContent = localStorage.getItem('O');
-            cellElements[pattern[0]].style.color = 'goldenrod';
-            cellElements[pattern[1]].style.color = 'goldenrod';
-            cellElements[pattern[2]].style.color = 'goldenrod';
-            message.style.color = 'goldenrod';
-            message.style.fontWeight = 500;
-            message.textContent = 'Player O Wins!';
-            won = true;
+            winner('O');
+            winStyles([cell1, cell2, cell3, message]);
         }
     });
 
+    // Check if the match is tied
     if (emptyCells === 0 && won === false) {
         message.textContent = 'Match Tied!';
     }
 
+    // Winner player logic
+    function winner(player) {
+        if (player === 'X') {
+            playerXScore = Number(playerXScore) + 1;
+            localStorage.setItem('X', playerXScore);
+            playerXScoreElement.textContent = playerXScore;
+            message.textContent = 'Player X Wins!';
+        } else {
+            playerOScore = Number(playerOScore) + 1;
+            localStorage.setItem('O', playerOScore);
+            playerOScoreElement.textContent = playerOScore;
+            message.textContent = 'Player O Wins!';
+        }
+        disableCells();
+        won = true;
+    }
+
+    // Winner styles
+    function winStyles(elements) {
+        elements.forEach((element) => {
+            element.classList.add('win');
+        });
+    }
+
+    // Disable all cells
     function disableCells() {
         cellElements.forEach((cell) => (cell.disabled = true));
     }
 }
 
-function mark(event) {
-    let input = event.target;
-
-    if (userTurn === true) {
-        input.value = 'X';
-        input.disabled = true;
-        message.textContent = "Player O's Turn";
-        userTurn = false;
-    } else {
-        input.value = 'O';
-        input.disabled = true;
-        message.textContent = "Player X's Turn";
-        userTurn = true;
-    }
-}
-
+// Restart the game
 function restart() {
     window.location.reload();
 }
 
+// Reset the score and restart the game
 function reset() {
     let message = 'Do you really want to RESET the score?';
     if (confirm(message) == true) {
         localStorage.setItem('X', 0);
         localStorage.setItem('O', 0);
-        playerXScoreElement.textContent = localStorage.getItem('X');
-        playerOScoreElement.textContent = localStorage.getItem('O');
         alert('Score Reset!');
         restart();
     } else {
